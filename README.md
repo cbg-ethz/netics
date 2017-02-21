@@ -11,6 +11,7 @@ ranked_list_genes = netics_fun( breast_struct, F_04, F_04_opp, 'RANK_AGGREG=SUM'
 ```
 
 'breastDEgenes.txt' --> a file containing a list of gene names detected as differentially expressed.
+
 'network_genes.txt' --> a file containing the list of network gene names. They should be in the same order as in the diffused matrices F_04 and F_04_opp.
 
 Example files for 'breastDEgenes.txt' and 'network_genes.txt' are given.
