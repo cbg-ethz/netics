@@ -20,6 +20,12 @@ RANK_AGGREG can take values "SUM" or "MEDIAN". "SUM" computes the summation of t
 
 UP_DOWN can take values from 1 to 3. "1" performs diffusion from the genetically aberrant genes, "2" performs diffusion from the differentially expressed genes, and "3" performs bidirectional network diffusion (from both aberrant and differentially expressed genes).
 
+breast_struct should be a cell arrya that contains the genetically aberrant genes for each sample. You should be able to access the genetically aberrant genes of the first sample typing
+
+```
+breast_struct{1}.genes
+```
+
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
 - [Niko Beerenwinkel](http://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=149417)
