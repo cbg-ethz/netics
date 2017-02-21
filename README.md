@@ -6,13 +6,13 @@ NetICS performs a per sample bidirectional network diffusion technique to priori
 The method should be called as follows:
 
 ```
-ranked_list_genes = netics_fun( breast_struct, F_04, F_04_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
+ranked_list_genes = netics_fun( breast_struct, F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
 
 ```
 
 'breastDEgenes.txt' --> a file containing a list of gene names detected as differentially expressed.
 
-'network_genes.txt' --> a file containing the list of network gene names. They should be in the same order as in the diffused matrices F_04 and F_04_opp.
+'network_genes.txt' --> a file containing the list of network gene names. They should be in the same order as in the diffused matrices F and F_opp.
 
 Example files for 'breastDEgenes.txt' and 'network_genes.txt' are given.
 
@@ -20,11 +20,12 @@ RANK_AGGREG can take values "SUM" or "MEDIAN". "SUM" computes the summation of t
 
 UP_DOWN can take values from 1 to 3. "1" performs diffusion from the genetically aberrant genes, "2" performs diffusion from the differentially expressed genes, and "3" performs bidirectional network diffusion (from both aberrant and differentially expressed genes).
 
-breast_struct should be a cell arrya that contains the genetically aberrant genes for each sample. You should be able to access the genetically aberrant genes of the first sample typing
+breast_struct --> should be a cell array that contains the genetically aberrant genes of each sample. For example, you should be able to access the genetically aberrant genes of the first sample by typing:
 
 ```
 breast_struct{1}.genes
 ```
+F and F_opp are precomputed diffused matrices on a given network.
 
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
