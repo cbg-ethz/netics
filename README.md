@@ -7,7 +7,6 @@ The method should be called as follows:
 
 ```
 ranked_list_genes = netics_fun( breast_struct, F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
-
 ```
 
 'breastDEgenes.txt' --> a file containing a list of gene names detected as differentially expressed.
@@ -16,7 +15,7 @@ ranked_list_genes = netics_fun( breast_struct, F, F_opp, 'RANK_AGGREG=SUM', 'UP_
 
 Example files for 'breastDEgenes.txt' and 'network_genes.txt' are given.
 
-RANK_AGGREG can take values "SUM" or "MEDIAN". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median.
+RANK_AGGREG can take values "SUM", "MEDIAN" or "RRA". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median. "RRA" computes the robust rank aggregation technique as described in (Kolde et al, 2012). The matlab code for implementing the RRA method can be found at http://ch.mathworks.com/matlabcentral/fileexchange/41835-rank-aggregation. You will need to include the files betaScores.m, correctBetaPvalues.m, rhoScores.m and thresholdBetaScore.m.
 
 UP_DOWN can take values from 1 to 3. "1" performs diffusion from the genetically aberrant genes, "2" performs diffusion from the differentially expressed genes, and "3" performs bidirectional network diffusion (from both aberrant and differentially expressed genes).
 
