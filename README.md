@@ -6,7 +6,7 @@ NetICS performs a per sample bidirectional network diffusion technique to priori
 The method should be called as follows:
 
 ```
-ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
+>> ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
 ```
 
 'mutation_data_breast.txt' --> input file that contains the genetically aberrant genes of each sample. It contains two columns that map every gene (1<sup>st</sup> column) to the samples that it is genetically aberrant (2<sup>nd</sup> column).
@@ -24,14 +24,14 @@ Example files for 'mutation_data_breast.txt', 'breastDEgenes.txt' and 'network_g
 F and F_opp are precomputed diffused matrices on a given network. Given a directed adjacency matrix _adj_, the _F_ matrix can be computed as:
 
 ```
-[ W ] = norm_adj_1( adj );
-[ F ] = insulated_diff( W, .5 );
+>> [ W ] = norm_adj_1( adj );
+>> [ F ] = insulated_diff( W, .5 );
 ```
 
 We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The example above computes the _F_ matrix for a given restart probability 0.5. The adjacency matrix for the network described in (Wu et al, 2010) is given as a .mat file (_adj_lar_com.mat_). You can load the adjacency matrix by typing:
 
 ```
-load('_adj_lar_com');
+>> load('_adj_lar_com');
 ```
 
 The file _adj_lar_com_opp.mat_ is the transpose of the adjacency matrix. It can be used to compute _F_opp_ in the same way.
@@ -39,7 +39,7 @@ The file _adj_lar_com_opp.mat_ is the transpose of the adjacency matrix. It can 
 After the execution of the _netics_fun_, we can access the 10 highest ranked genes of the method by typing:
 
 ```
-ranked_list_genes(1:10)
+>> ranked_list_genes(1:10)
 ```
 
 ### Contributions
