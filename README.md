@@ -17,9 +17,9 @@ ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGR
 
 Example files for 'mutation_data_breast.txt', 'breastDEgenes.txt' and 'network_genes.txt' are given.
 
-RANK_AGGREG determines the rank aggregation scheme to be used. It can take values "SUM", "MEDIAN" or "RRA". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median. "RRA" implements the robust rank aggregation technique as described in (Kolde et al, 2012). The matlab code for implementing the RRA method can be found at http://ch.mathworks.com/matlabcentral/fileexchange/41835-rank-aggregation. You will need to include the files betaScores.m, correctBetaPvalues.m, rhoScores.m and thresholdBetaScore.m.
+'RANK_AGGREG' determines the rank aggregation scheme to be used. It can take values "SUM", "MEDIAN" or "RRA". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median. "RRA" implements the robust rank aggregation technique as described in (Kolde et al, 2012). The matlab code for implementing the RRA method can be found at http://ch.mathworks.com/matlabcentral/fileexchange/41835-rank-aggregation. You will need to include the files betaScores.m, correctBetaPvalues.m, rhoScores.m and thresholdBetaScore.m.
 
-UP_DOWN determines the diffusion procedure to be used. Possible entries are 1, 2 and 3. "1" performs diffusion from the genetically aberrant genes towards the directionality of the network interactions, "2" performs diffusion from the differentially expressed genes opposite from the directionality of the network interactions, and "3" performs bidirectional network diffusion (from both genetically aberrant and differentially expressed genes).
+'UP_DOWN' determines the diffusion procedure to be used. Possible entries are 1, 2 and 3. "1" performs diffusion from the genetically aberrant genes towards the directionality of the network interactions, "2" performs diffusion from the differentially expressed genes opposite from the directionality of the network interactions, and "3" performs bidirectional network diffusion (from both genetically aberrant and differentially expressed genes).
 
 F and F_opp are precomputed diffused matrices on a given network. Given a directed adjacency matrix _adj_, the _F_ matrix can be computed as:
 
