@@ -42,6 +42,9 @@ After the execution of the _netics_fun_, we can access the 10 highest ranked gen
 >> ranked_list_genes(1:10)
 ```
 
+Dependencies:
+  - Matlab (at least R2015a)
+
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
 - [Niko Beerenwinkel](http://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=149417)
