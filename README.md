@@ -1,5 +1,4 @@
-# NetICS
-Network-based integration of multi-omics data for prioritizing cancer genes
+# NetICS: Network-based integration of multi-omics data for prioritizing cancer genes
 
 NetICS performs a per sample bidirectional network diffusion technique to prioritize genes based on their proximity to genetically aberrant and differentially expressed genes. It provides rank aggregation techniques for integrating the sample-specific gene lists into an overall ranked list of genes.
 
@@ -11,9 +10,9 @@ The method should be called as follows:
 
 'mutation_data_breast.txt' --> tab delimited file that contains the genetically aberrant genes of each sample. It contains two columns that map each gene (1<sup>st</sup> column) to the samples that it is genetically aberrant (2<sup>nd</sup> column).
 
-'RNA_diff_expr.txt' --> tab delimited file with two columns. 1<sup>st</sup> column contains the genes for which differential expression between the tumor and normal samples at the RNA level was measured. 2<sup>nd</sup> column contains the p-values of these measurements. This file can be the result of a tool for differential expression analysis such as DESeq2. Each gene should have only one entry in this file.
+'RNA_diff_expr.txt' --> tab delimited file with two columns. First column contains the genes for which differential expression between the tumor and normal samples at the RNA level was measured. Second column contains the p-values of these measurements. This file can be the result of a tool for differential expression analysis such as DESeq2. Each gene should have only one entry in this file.
 
-'protein_diff_expr.txt' --> tab delimited file with two columns. 1<sup>st</sup> column contains the proteins for which differential expression between the tumor and normal samples at the protein level was measured. 2<sup>nd</sup> column contains the p-values of these measurements. Each gene should have only one entry in this file.
+'protein_diff_expr.txt' --> tab delimited file with two columns. First column contains the proteins for which differential expression between the tumor and normal samples at the protein level was measured. Second column contains the p-values of these measurements. Each gene should have only one entry in this file.
 
 The p-values in files 'RNA_diff_expr.txt' and 'protein_diff_expr.txt' should be provided unadjusted because they are combined by using the Fisher's method. After that, NetICS adjusts them for multiple testing by using Benjamini & Hochberg FDR correction. The function for computing FDR correction can be derived from https://brainder.org/2011/09/05/fdr-corrected-fdr-adjusted-p-values/.
 
@@ -46,6 +45,8 @@ After the execution of the _netics_fun_, we can access the 10 highest ranked gen
 >> ranked_list_genes(1:10)
 ```
 The files _pchisq.m_ and _pgamma.m_ were derived from https://ch.mathworks.com/matlabcentral/fileexchange/15171-jennrich-test/content/Jennrich/pchisq.m.
+
+Whenever the word 'sample' is mentioned above, we mean one paired observation for which measurements for tumor and normal tissues are available.
 
 Dependencies:
   - Matlab (at least R2015a)
