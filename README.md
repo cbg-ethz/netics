@@ -6,7 +6,7 @@ NetICS performs a per sample bidirectional network diffusion technique to priori
 The method should be called as follows:
 
 ```
-ranked_list_genes = netics_fun( breast_struct, F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
+ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
 ```
 
 'breastDEgenes.txt' --> a file containing a list of gene names detected as differentially expressed.
