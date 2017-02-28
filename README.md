@@ -28,7 +28,19 @@ F and F_opp are precomputed diffused matrices on a given network. Given a direct
 [ F ] = insulated_diff( W, .5 );
 ```
 
-We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The example above computes the _F_ matrix for a given restart probability 0.5. 
+We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The example above computes the _F_ matrix for a given restart probability 0.5. The adjacency matrix for the network described in (Wu et al, 2010) is given as a .mat file (_adj_lar_com.mat_). You can load the adjacency matrix by typing:
+
+```
+load('_adj_lar_com');
+```
+
+The file _adj_lar_com_opp.mat_ is the transpose of the adjacency matrix. It can be used to compute _F_opp_ in the same way.
+
+After the execution of the _netics_fun_, we can access the 10 highest ranked genes of the method by typing:
+
+```
+ranked_list_genes(1:10)
+```
 
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
