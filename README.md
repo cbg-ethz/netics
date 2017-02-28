@@ -41,6 +41,7 @@ After the execution of the _netics_fun_, we can access the 10 highest ranked gen
 ```
 >> ranked_list_genes(1:10)
 ```
+The files pchisq.m and pgamma.m were derived from https://ch.mathworks.com/matlabcentral/fileexchange/15171-jennrich-test/content/Jennrich/pchisq.m.
 
 Dependencies:
   - Matlab (at least R2015a)
