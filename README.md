@@ -28,7 +28,7 @@ F and F_opp are precomputed diffused matrices on a given network. Given a direct
 [ F ] = insulated_diff( W, .5 );
 ```
 
-We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The example above computes the _F_ matrix with a given restart probability 0.5. 
+We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The example above computes the _F_ matrix for a given restart probability 0.5. 
 
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
