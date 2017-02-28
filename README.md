@@ -1,13 +1,15 @@
 # NetICS
-Network-based integration of multi omics data for prioritizing cancer genes
+Network-based integration of multi-omics data for prioritizing cancer genes
 
-NetICS performs a per sample bidirectional network diffusion technique to prioritize genes based on their proximity to genetically aberrant and differentially expressed genes. It provides a rank aggregation technique for integrating the sample-specific gene lists into an overall ranked list of genes.
+NetICS performs a per sample bidirectional network diffusion technique to prioritize genes based on their proximity to genetically aberrant and differentially expressed genes. It provides rank aggregation techniques for integrating the sample-specific gene lists into an overall ranked list of genes.
 
 The method should be called as follows:
 
 ```
 ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
 ```
+
+'mutation_data_breast.txt' --> a file with two columns that maps every gene (1^st column) to the samples that it is genetically aberrant (2^nd column).
 
 'breastDEgenes.txt' --> a file containing a list of gene names detected as differentially expressed.
 
@@ -19,12 +21,9 @@ RANK_AGGREG can take values "SUM", "MEDIAN" or "RRA". "SUM" computes the summati
 
 UP_DOWN can take values from 1 to 3. "1" performs diffusion from the genetically aberrant genes, "2" performs diffusion from the differentially expressed genes, and "3" performs bidirectional network diffusion (from both aberrant and differentially expressed genes).
 
-breast_struct --> should be a cell array that contains the genetically aberrant genes of each sample. For example, you should be able to access the genetically aberrant genes of the first sample by typing:
-
-```
-breast_struct{1}.genes
-```
 F and F_opp are precomputed diffused matrices on a given network.
+
+
 
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
