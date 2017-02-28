@@ -24,8 +24,8 @@ Example files for 'mutation_data_breast.txt', 'breastDEgenes.txt' and 'network_g
 F and F_opp are precomputed diffused matrices on a given network. Given a directed adjacency matrix _adj_, the _F_ matrix can be computed as:
 
 ```
->> [ W ] = norm_adj_1( adj );
->> [ F ] = insulated_diff( W, .5 );
+>> W = norm_adj_1( adj );
+>> F = insulated_diff( W, .5 );
 ```
 
 We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The example above computes the _F_ matrix for a given restart probability 0.5. The adjacency matrix for the network described in (Wu et al, 2010) is given as a .mat file (_adj_lar_com.mat_). You can load the adjacency matrix by typing:
