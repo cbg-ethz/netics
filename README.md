@@ -9,7 +9,7 @@ The method should be called as follows:
 ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
 ```
 
-'mutation_data_breast.txt' --> a file with two columns that maps every gene (1^st column) to the samples that it is genetically aberrant (2^nd column).
+'mutation_data_breast.txt' --> a file with two columns that maps every gene (1^st column) to the samples that it is genetically aberrant (2<sup>nd</sup> column).
 
 'breastDEgenes.txt' --> a file containing a list of gene names detected as differentially expressed.
 
