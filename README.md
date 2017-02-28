@@ -6,20 +6,24 @@ NetICS performs a per sample bidirectional network diffusion technique to priori
 The method should be called as follows:
 
 ```
->> ranked_list_genes = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'breastDEgenes.txt', 'network_genes.txt');
+>> [ ranked_list_genes, scores ] = netics_fun( 'mutation_data_breast.txt', F_04, F_04_opp, 'RANK_AGGREG=SUM', 'UP_DOWN=3', 'RNA_diff_expr.txt', 'protein_diff_expr.txt', 'network_genes.txt');
 ```
 
-'mutation_data_breast.txt' --> input file that contains the genetically aberrant genes of each sample. It contains two columns that map every gene (1<sup>st</sup> column) to the samples that it is genetically aberrant (2<sup>nd</sup> column).
+'mutation_data_breast.txt' --> tab delimited file that contains the genetically aberrant genes of each sample. It contains two columns that map every gene (1<sup>st</sup> column) to the samples that it is genetically aberrant (2<sup>nd</sup> column).
 
-'breastDEgenes.txt' --> input file that contains a list of gene names detected as differentially expressed between the tumor and normal samples.
+'RNA_diff_expr.txt' --> tab delimited file with two columns. 1<sup>st</sup> column contains the genes for which differential expression between the tumor and normal samples at the RNA level was measured. 2<sup>nd</sup> column contains the p-values of these measurements. This file can be the result of a tool for differential expression analysis such as DESeq2.
 
-'network_genes.txt' --> input file that contains the list of network gene names. They should be in the same order as in the rows of the diffused matrices F and F_opp.
+'protein_diff_expr.txt' --> tab delimited file with two columns. 1<sup>st</sup> column contains the proteins for which differential expression between the tumor and normal samples at the protein level was measured. 2<sup>nd</sup> column contains the p-values of these measurements.
 
-Example files for 'mutation_data_breast.txt', 'breastDEgenes.txt' and 'network_genes.txt' are given.
+The p-values in files 'RNA_diff_expr.txt' and 'protein_diff_expr.txt' should be provided unadjusted because they are combined by using the Fisher's method. After that, NetICS adjusts them for multiple testing by using Benjamini & Hochberg FDR correction. The function for computing FDR correction can be derived from https://brainder.org/2011/09/05/fdr-corrected-fdr-adjusted-p-values/.
+
+Example files for 'mutation_data_breast.txt', 'RNA_diff_expr.txt',  protein_diff_expr.txt' are given based on the breast cancer data in TCGA.
 
 'RANK_AGGREG' determines the rank aggregation scheme to be used. It can take values "SUM", "MEDIAN" or "RRA". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median. "RRA" implements the robust rank aggregation technique as described in (Kolde et al, 2012). The matlab code for implementing the RRA method can be found at http://ch.mathworks.com/matlabcentral/fileexchange/41835-rank-aggregation. You will need to include the files betaScores.m, correctBetaPvalues.m, rhoScores.m and thresholdBetaScore.m.
 
 'UP_DOWN' determines the diffusion procedure to be used. Possible entries are 1, 2 and 3. "1" performs diffusion from the genetically aberrant genes towards the directionality of the network interactions, "2" performs diffusion from the differentially expressed genes opposite from the directionality of the network interactions, and "3" performs bidirectional network diffusion (from both genetically aberrant and differentially expressed genes).
+
+'network_genes.txt' --> input file that contains the list of the genes that are present in the network. They should be in the same order as in the rows of the diffused matrices F and F_opp. An example file is given that contains the gene names of the network described in (Wu et al, 2010).
 
 F and F_opp are precomputed diffused matrices on a given network. Given a directed adjacency matrix _adj_, the _F_ matrix can be computed as:
 
@@ -41,7 +45,7 @@ After the execution of the _netics_fun_, we can access the 10 highest ranked gen
 ```
 >> ranked_list_genes(1:10)
 ```
-The files pchisq.m and pgamma.m were derived from https://ch.mathworks.com/matlabcentral/fileexchange/15171-jennrich-test/content/Jennrich/pchisq.m.
+The files _pchisq.m_ and _pgamma.m_ were derived from https://ch.mathworks.com/matlabcentral/fileexchange/15171-jennrich-test/content/Jennrich/pchisq.m.
 
 Dependencies:
   - Matlab (at least R2015a)
