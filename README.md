@@ -16,7 +16,7 @@ The method is called as follows:
 
 'protein_diff_expr_breast.txt' --> tab delimited file with two columns. First column contains the proteins for which differential expression between the tumor and normal samples at the protein level was measured. Second column contains the p-values of these measurements. Each gene should have only one entry in this file.
 
-The two files that contain the differentially expressed genes at the RNA and proteome levels (for example, 'RNA_diff_expr_breast.txt' and 'protein_diff_expr_breast.txt') are optional. If not provided, only the labels of the genetically aberrant genes are used for network diffusion.
+The two files that contain the differentially expressed genes at the RNA and proteome levels (for example, 'RNA_diff_expr_breast.txt' and 'protein_diff_expr_breast.txt') are optional. If not provided, NetICS only uses the labels of the genetically aberrant genes for network diffusion.
 
 The p-values in files 'RNA_diff_expr_breast.txt' and 'protein_diff_expr_breast.txt' should be provided unadjusted because they are combined by using the Fisher's method. After that, NetICS adjusts them for multiple testing by using Benjamini & Hochberg FDR correction. The function for computing FDR correction can be derived from https://brainder.org/2011/09/05/fdr-corrected-fdr-adjusted-p-values/.
 
