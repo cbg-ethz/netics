@@ -36,19 +36,18 @@ _restart_prob_ -> The restart probability to be used in the insulated diffusion.
 >> restart_prob=0.4;
 ```
 
-After the execution of the _netics_fun_, we can access the 10 highest ranked genes of the method by typing:
+You can also average the ranks over several values of the restart probability. The script _netics_fun_all.m_ gives an example for the TCGA breast invasize carcinoma dataset, for restart probability values between 0.2 and 0.8 with a step size of 0.1. After the execution of the _netics_fun_, we can access the 10 highest ranked genes of the method by typing:
 
 ```
 >> ranked_list_genes(1:10)
 ```
+
 The files _pchisq.m_ and _pgamma.m_ were derived from https://ch.mathworks.com/matlabcentral/fileexchange/15171-jennrich-test/content/Jennrich/pchisq.m.
 
 Whenever the word 'sample' is mentioned above, we mean one paired observation for which measurements for tumor and normal tissues are available.
 
 Dependencies:
   - Matlab (at least R2015a)
-
-### References
 
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
