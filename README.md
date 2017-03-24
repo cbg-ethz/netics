@@ -5,7 +5,7 @@ NetICS performs a per sample bidirectional network diffusion technique to priori
 The method is called as follows:
 
 ```
->> [ ranked_list_genes, ranked_scores ] = netics_fun( 'mutation_data_breast.txt', F, F_opp, 'RANK_AGGREG=SUM', 'network_genes.txt', 'RNA_diff_expr_breast.txt', 'protein_diff_expr_breast.txt');
+>> [ ranked_list_genes, ranked_scores ] = netics_fun( 'mutation_data_breast.txt', adj_lar_com, restart_prob, 'RANK_AGGREG=SUM', 'network_genes.txt', 'RNA_diff_expr_breast.txt', 'protein_diff_expr_breast.txt');
 ```
 
 'mutation_data_breast.txt' --> tab delimited file that contains the genetically aberrant genes of each sample. It contains two columns that map each gene (1<sup>st</sup> column) to the samples that it is genetically aberrant (2<sup>nd</sup> column).
@@ -24,20 +24,17 @@ Example files for 'mutation_data_breast.txt', 'RNA_diff_expr_breast.txt' and pro
 
 'RANK_AGGREG' determines the rank aggregation scheme to be used. It can take the values "SUM", "MEDIAN" or "RRA". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median. "RRA" implements the robust rank aggregation technique as described in (Kolde et al, 2012). The matlab code of the RRA method can be derived from http://ch.mathworks.com/matlabcentral/fileexchange/41835-rank-aggregation. You will need to include the files betaScores.m, correctBetaPvalues.m, rhoScores.m and thresholdBetaScore.m.
 
-F and F_opp are precomputed diffused matrices on a given network. Given a directed adjacency matrix _adj_, the _F_ matrix can be computed as:
-
-```
->> W = norm_adj( adj );
->> F = insulated_diff( W, .5 );
-```
-
-We first need to compute the normalized adjaceny matrix _W_ with the function _norm_adj_. The above example computes the _F_ matrix for a given restart probability 0.5. The adjacency matrix for the network described in (Wu et al, 2010) is given as a .mat file (_adj_lar_com.mat_). You can load the adjacency matrix by typing:
+_adj_lar_com_ -> The adjacency matrix for the directed functional network described in (Wu et al, 2010). It is given as a .mat file (_adj_lar_com.mat_). You can load the adjacency matrix by typing:
 
 ```
 >> load('adj_lar_com');
 ```
 
-The file _adj_lar_com_opp.mat_ is the transpose of the adjacency matrix. It can be used to compute _F_opp_ in the same way.
+_restart_prob_ -> The restart probability to be used in the insulated diffusion. For the (Wu et al., 2010) network, a restart probability of _0.4_ should be used. In general, a reasonable value should be chosen that depends on the network. See the HotNet2 algorithm (Leiserson et al., 2015) for selecting the restart probability based on the inflection point. Define your restart probability as follows:
+
+```
+>> restart_prob=0.4;
+```
 
 After the execution of the _netics_fun_, we can access the 10 highest ranked genes of the method by typing:
 
@@ -51,12 +48,13 @@ Whenever the word 'sample' is mentioned above, we mean one paired observation fo
 Dependencies:
   - Matlab (at least R2015a)
 
+### References
+
 ### Contributions
 - [Christos Dimitrakopoulos](https://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=197642)
 - [Niko Beerenwinkel](http://www.bsse.ethz.ch/cbg/group/people/person-detail.html?persid=149417)
 
-
-###Contact
+### Contact
 ```
 Christos Dimitrakopoulos
 christos.dimitrakopoulos (at) bsse.ethz.ch
