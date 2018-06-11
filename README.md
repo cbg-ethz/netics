@@ -24,7 +24,7 @@ Example files for 'mutation_data_breast.txt', 'RNA_diff_expr_breast.txt' and pro
 
 'RANK_AGGREG' determines the rank aggregation scheme to be used. It can take the values "SUM", "MEDIAN" or "RRA". "SUM" computes the summation of the per sample ranks and "MEDIAN" computes the median. "RRA" implements the robust rank aggregation technique as described in (Kolde et al, 2012). The matlab code of the RRA method can be derived from http://ch.mathworks.com/matlabcentral/fileexchange/41835-rank-aggregation. You will need to include the files betaScores.m, correctBetaPvalues.m, rhoScores.m and thresholdBetaScore.m.
 
-_adj_lar_com_ -> The adjacency matrix for the directed functional network described in (Wu et al, 2010). It is given as a .mat file (_adj_lar_com.mat_). You can load the adjacency matrix by typing:
+_adj_lar_com_ -> The adjacency matrix for the directed functional network described in (Wu et al, 2010). It is given as a .mat file (_adj_lar_com.mat_). Every entry of the matrix should be 1 in _A[i,j]_ if there is an edge from node _i_ to node _j_. You can load the adjacency matrix by typing:
 
 ```
 >> load('adj_lar_com');
